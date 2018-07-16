@@ -1,15 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Van Nam
- * Date: 7/11/2018
- * Time: 09:51
- */
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
 
-class AdminController
+class AdminController extends Controller
 {
-
+    //
+    public function index()
+    {
+        return view('manager')->with([
+            "listProduct" => Product::all(),
+            "listCategory" => Category::all()
+        ]);
+    }
 }

@@ -21,11 +21,6 @@ class ProductsController extends Controller
             ]);
     }
 
-    public function manager()
-    {
-        return view('manager');
-    }
-
     /**
      * Show the form for creating a new resource.
      *

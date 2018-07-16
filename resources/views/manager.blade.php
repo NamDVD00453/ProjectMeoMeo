@@ -339,14 +339,14 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active treeview">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        <i class="fa fa-dashboard"></i> <span>Manager</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Products</a></li>
+                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Category</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -376,7 +376,35 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <section class="content">
-
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($listProduct as $key =>$product)
+                        <tr>
+                            <td>{{$product -> productId}}</td>
+                            <td>{{$product -> productName}}</td>
+                            <td>{{$product -> productDesc}}</td>
+                            <td>{{$product -> productPrice}}</td>
+                            <td>{{$product -> categoryId}}</td>
+                            <th>
+                                <a class="btn btn-app">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                            </th>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </section>
         <!-- /.content -->
     </div>
