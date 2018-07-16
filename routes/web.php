@@ -20,3 +20,9 @@ Route::get('/manager/', 'ProductsController@manager');
 Route::get('/admin', function () {
     return view('manager');
 });
+Route::get('/register', 'RegistrationController@create');
+Route::post('register', 'RegistrationController@store');
+
+Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');
