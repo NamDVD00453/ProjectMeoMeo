@@ -70,15 +70,15 @@
                             @foreach($listProduct as $key =>$product)
                                 <li>
                                     <div class="products">
-                                        <a href="#">
+                                        <a href="/product/{{$product->productId}}">
                                             <img src="{{$product -> img}}" alt="">
                                         </a>
-                                        <a href="#">
+                                        <a href="/product/{{$product->productId}}">
                                             <h4>{{$product -> productName}}</h4>
                                         </a>
                                         <p class="price">From: {{$product -> productPrice}}</p>
                                         <div >
-                                            <a class="view-link shutter" href="#">
+                                            <a class="view-link shutter" onclick="add(this)" id="{{$product->productId}}" name="{{$product->productName}}">
                                                 <i class="fa fa-plus-circle"></i>Add To Cart</a>
                                         </div>
                                     </div>	<!-- End of /.products -->
@@ -160,5 +160,50 @@
         </div>
     </section>	<!-- End of Section -->
 
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "";
+        }
+        function add(elm) {
+            // var pName = $(elm).attr("name");
+
+            var cart = Cookies.get("cart");
+            if (!cart)
+            {
+                cart = {};
+            } else
+            {
+                cart = JSON.parse(cart);
+            }
+
+            if (!cart[elm.id])
+            {
+                cart[elm.id] = 1;
+            } else
+            {
+                cart[elm.id]++;
+            }
+            Cookies.set("cart", cart);
+            alert(getCookie("cart"));
+        }
+</script>
 @stop
 

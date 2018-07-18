@@ -28,6 +28,16 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function item(Request $request, $productId)
+    {
+
+        $product = Product::where('productId', '=', $productId)->firstOrFail();
+        $productName = $product->productName;
+
+        return view('layouts.product')->with([
+            "product" => $product
+        ]);
+    }
 
 
 
@@ -41,51 +51,65 @@ class ProductsController extends Controller
 
     public function insert()
     {
-//        echo (Input::get('productName'));
 
         $product = new Product();
+
+
+
         if (Input::get('productName' == null))
         {
-            return 'Products name cannot be empty';
+            return redirect('/admin/addProduct')->with('status', 'Products name cannot be empty!');
         } else
         {
             $product->productName = Input::get('productName');
+            if (Input::get('productDesc' == null))
+            {
+                return 'Products description cannot be empty';
+            } else
+            {
+                $product->productDesc = Input::get('productDesc');
+                if (Input::get('productPrice' == null))
+                {
+                    return 'Products price cannot be empty';
+                } else
+                {
+                    $product->productPrice = Input::get('productPrice');
+                    if (Input::get('productImg' == null))
+                    {
+                        return 'Products Image cannot be empty';
+                    } else
+                    {
+                        $product->img = Input::get('productImg');
+
+                        if (Input::get('productCategory' == null))
+                        {
+                            return 'Products Image cannot be empty';
+                        } else
+                        {
+                            $product->categoryId = Input::get('productCategory');
+                            $product->save();
+
+
+                            return redirect('/admin/addProduct')->with('status', 'Product saved!');
+                        };
+                    };
+                };
+            };
         };
 
-        if (Input::get('productDesc' == null))
-        {
-            return 'Products description cannot be empty';
-        } else
-        {
-            $product->productDesc = Input::get('productDesc');
-        };
 
-        if (Input::get('productPrice' == null))
-        {
-            return 'Products price cannot be empty';
-        } else
-        {
-            $product->productPrice = Input::get('productPrice');
-        };
 
-        if (Input::get('productImg' == null))
-        {
-            return 'Products Image cannot be empty';
-        } else
-        {
-            $product->img = Input::get('productImg');
-        };
 
-        if (Input::get('productCategory' == null))
-        {
-            return 'Products Image cannot be empty';
-        } else
-        {
-            $product->categoryId = Input::get('productCategory');
-        };
 
-        $product->save();
-        return redirect('/admin/addProduct')->with('status', 'Product saved!');
+
+
+
+//        if ($c == 'T')
+//        {
+////            $product->save();
+//            return redirect('/admin/addProduct')->with('status', 'Product saved!');
+//        }
+
     }
 
     /**

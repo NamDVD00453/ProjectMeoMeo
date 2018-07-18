@@ -21,12 +21,23 @@ Route::get('/', 'ProductsController@index');
 //    return view('manager');
 //});
 Route::get('/admin', 'AdminController@index');
-Route::get('/admin/addProduct', 'ProductsController@create');
+Route::get('/admin/listproducts', 'AdminController@allProduct');
+Route::get('/admin/listcategories', 'AdminController@allCategory');
 
+Route::get('/admin/addProduct', 'ProductsController@create');
+Route::get('/product/{productId}', 'ProductsController@item');
 Route::post('product/insert','ProductsController@insert');
 Route::get('admin/product/delete/{productId}', 'ProductsController@delete');
+Route::get('add/{productId}', 'OrderController@addToCart');
+
+
+
 Route::get('/category/{categoryId}', 'CategoriesController@index');
-Route::get('/product/{productId}', 'ProductsController@index');
+Route::post('category/insert','CategoriesController@insert');
+Route::get('admin/category/delete/{categoryId}', 'CategoriesController@delete');
+
+
+Route::get('/cart', 'OrderController@showCart');
 
 
 Route::get('/test', function () {

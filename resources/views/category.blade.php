@@ -236,10 +236,10 @@
                     @foreach($listProduct as $key =>$product)
                             <li>
                                 <div class="products">
-                                    <a href="#">
+                                    <a href="/product/{{$product->productId}}">
                                         <img src="{{$product -> img}}" alt="">
                                     </a>
-                                    <a href="#">
+                                    <a href="/product/{{$product->productId}}">
                                         <h4>{{$product -> productName}}</h4>
                                     </a>
                                     <p class="price">From: {{$product -> productPrice}}</p>

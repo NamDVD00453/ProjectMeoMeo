@@ -13,23 +13,7 @@
                         </a>
                     </li>
                     <li>
-                        <div class="cart dropdown">
-                            <a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng (1)</a>
-                            <div class="dropdown-menu dropup">
-                                <span class="caret"></span>
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <img class="pull-left" src="https://cdn0.woolworths.media/content/wowproductimages/large/329812.jpg" alt="">
-                                        <div class="media-body">
-                                            <h6>Monster Energy
-                                                <span>26000đ</span>
-                                            </h6>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-primary btn-sm">Thanh toán</button>
-                            </div>
-                        </div>
+                        <a id="cart" href="/cart"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                     </li>
                 </ul>
             </div>
@@ -115,7 +99,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="#">
+                <a href="/">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Meo_logo.svg/1280px-Meo_logo.svg.png" alt="logo">
                 </a>
             </div>	<!-- End of /.col-md-12 -->
