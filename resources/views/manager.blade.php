@@ -47,7 +47,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -341,12 +341,13 @@
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Manager</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Products</a></li>
-                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Category</a></li>
+                        <li><a href="/admin/addProduct"><i class="fa fa-circle-o"></i> Add product</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Category</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -385,6 +386,8 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Category</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -396,8 +399,13 @@
                             <td>{{$product -> productPrice}}</td>
                             <td>{{$product -> categoryId}}</td>
                             <th>
-                                <a class="btn btn-app">
+                                <a class="btn btn-app" href="//{{$product -> productId}}" method="get">
                                     <i class="fa fa-edit"></i> Edit
+                                </a>
+                            </th>
+                            <th>
+                                <a class="btn btn-app" href="/admin/product/delete/{{$product -> productId}}" method="post">
+                                    <i class="fa fa-trash"></i> Delete
                                 </a>
                             </th>
                         </tr>

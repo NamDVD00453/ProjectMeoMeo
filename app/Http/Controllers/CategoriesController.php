@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Product;
 
 class CategoriesController extends Controller
 {
@@ -12,10 +13,23 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $categoryId)
     {
         //
-        return view('manager');
+//        return view('category')->with([
+//            "listProduct" => Product::all(),
+//            "listCategory" => Category::all()
+//        ]);
+
+        $category = Category::where('categoryId','=', $categoryId)->firstOrFail();
+        $categoryName = $category->categoryName;
+        $products = Product::where('categoryId', $categoryName)->get();
+        return view('layouts.category')->with([
+            "listProduct" => $products,
+            "listCategory" => Category::all(),
+            "categoryName" => $categoryName
+        ]);
+
     }
 
     /**

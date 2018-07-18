@@ -154,7 +154,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="#">
+                <a href="/">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Meo_logo.svg/1280px-Meo_logo.svg.png" alt="logo">
                 </a>
             </div>	<!-- End of /.col-md-12 -->
@@ -181,7 +181,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
-                <li class="active"><a href="#">TRANG CHỦ</a></li>
+                <li class="active"><a href="/">TRANG CHỦ</a></li>
                 <li class="dropdown">
                     <a href="#">
                         THỰC ĐƠN
@@ -192,12 +192,6 @@
                         @foreach($listCategory as $key =>$category)
                             <li><a  href="/category/{{$category -> categoryId}}">{{$category -> categoryName}}</a></li>
                         @endforeach
-
-                        {{--<li><a  href="#">Cơm</a></li>--}}
-                        {{--<li><a  href="#">Cháo</a></li>--}}
-                        {{--<li><a  href="#">Mì, bún</a></li>--}}
-                        {{--<li><a  href="#">Đồ ăn vặt</a></li>--}}
-                        {{--<li><a  href="#">Đồ uống</a></li>--}}
                     </ul>
                 </li> <!-- End of /.dropdown -->
                 <li><a href="blog.html">BLOG</a></li>
@@ -211,155 +205,152 @@
 </nav>	<!-- End of /.nav -->
 
 
-<!-- SLIDER Start
-================================================== -->
-
-
-<section id="slider-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="slider" class="nivoSlider">
-                    <img src="https://i.imgur.com/goeqR3L.jpg" alt="" />
-                    <img src="https://i.imgur.com/hTAygvl.jpg" alt=""/>
-                    <img src="https://i.imgur.com/OTdsg29.jpg" alt="" />
-                </div>	<!-- End of /.nivoslider -->
-            </div>	<!-- End of /.col-md-12 -->
-        </div>	<!-- End of /.row -->
-    </div>	<!-- End of /.container -->
-</section> <!-- End of Section -->
-
-
-
-<!-- FEATURES Start
-================================================== -->
-
-<section id="features">
+<section id="topic-header">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="block">
-                    <div class="media">
-                        <div class="pull-left" href="#">
-                            <i class="fa fa-ambulance"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Free Shipping</h4>
-                            <p>Miễn phí ship nội thành Hà Nội với đơn hàng trên 50.000.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="block">
-                    <div class="media">
-                        <div class="pull-left" href="#">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Fast Service</h4>
-                            <p>Đồ ăn nhanh, đảm bảo vệ sinh và an toàn thực phẩm.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="block">
-                    <div class="media">
-                        <div class="pull-left" href="#">
-                            <i class=" fa fa-phone"></i>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Call Us</h4>
-                            <p>Gọi đặt hàng: 0988 123 123.</p>
-                        </div>	<!-- End of /.media-body -->
-                    </div>	<!-- End of /.media -->
-                </div>	<!-- End of /.block -->
-            </div> <!-- End of /.col-md-4 -->
+                <h1>Menu</h1>
+                <p>Các món ăn có sẵn.</p>
+            </div>	<!-- End of /.col-md-4 -->
+            <div class="col-md-8 hidden-xs">
+                <ol class="breadcrumb pull-right">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">{{$categoryName}}</li>
+                </ol>
+            </div>	<!-- End of /.col-md-8 -->
+
         </div>	<!-- End of /.row -->
     </div>	<!-- End of /.container -->
-</section>	<!-- End of section -->
+</section>	<!-- End of /#Topic-header -->
 
-
-
-<!-- CATAGORIE Start
-================================================== -->
-
-<section id="catagorie">
+<section id="shop">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="block">
-                    <div class="block-heading">
-                        <h2>DANH MỤC</h2>
-                    </div>
-                    <div class="row">
-
-                        @foreach($listCategory as $key =>$category)
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <a class="catagotie-head" href="/category/{{$category -> categoryId}}">
-                                        <img src="{{$category -> categoryImg}}" class="img-thumbnail" alt="...">
-                                        <h3>{{$category -> categoryName}}</h3>
-                                    </a>
-                                    <div class="caption">
-                                        <p>Description ...</p>
-                                        <p>
-                                            <a href="blog-single.html" class="btn btn-default btn-transparent" role="button">
-                                                <span>Đặt hàng</span>
-                                            </a>
-                                        </p>
-                                    </div>	<!-- End of /.caption -->
-                                </div>	<!-- End of /.thumbnail -->
-                            </div>	<!-- End of /.col-sm-6 col-md-4 -->
-                        @endforeach
-
-                    </div>	<!-- End of /.row -->
-                </div>	<!-- End of /.block -->
-            </div>	<!-- End of /.col-md-12 -->
-        </div>	<!-- End of /.row -->
-    </div>	<!-- End of /.container -->
-</section>	<!-- End of Section -->
-
-
-
-
-<!-- PRODUCTS Start
-================================================== -->
-
-<section id="products">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="products-heading">
-                    <h2>THỰC ĐƠN</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+                    <h2>{{$categoryName}}</h2>
+                </div>	<!-- End of /.Products-heading -->
+                <div class="product-grid">
+                    <ul>
 
-            @foreach($listProduct as $key =>$product)
-                <div class="col-md-3">
-                    <div class="products">
-                        <a href="single-product.html">
-                            <img src="{{$product -> img}}" alt="">
-                        </a>
-                        <a href="single-product.html">
-                            <h4>{{$product -> productName}}</h4>
-                        </a>
-                        <p class="price">{{$product -> productPrice}}</p>
-                        <a class="view-link shutter" href="#">
-                            <i class="fa fa-plus-circle"></i>Add To Cart</a>
-                    </div>	<!-- End of /.products -->
+                    @foreach($listProduct as $key =>$product)
+                            <li>
+                                <div class="products">
+                                    <a href="#">
+                                        <img src="{{$product -> img}}" alt="">
+                                    </a>
+                                    <a href="#">
+                                        <h4>{{$product -> productName}}</h4>
+                                    </a>
+                                    <p class="price">From: {{$product -> productPrice}}</p>
+                                    <div >
+                                        <a class="view-link shutter" href="#">
+                                            <i class="fa fa-plus-circle"></i>Add To Cart</a>
+                                    </div>
+                                </div>	<!-- End of /.products -->
+                            </li>
+                    @endforeach
+
+                        <!--  ... -->
+                    </ul>
+                </div>	<!-- End of /.products-grid -->
+
+                <!-- Pagination -->
+
+                {{--<div class="pagination-bottom">--}}
+                    {{--<ul class="pagination">--}}
+                        {{--<li class="disabled"><a href="#">&laquo;</a></li>--}}
+                        {{--<li class="active"><a href="#">1 <span class="sr-only"></span></a></li>--}}
+                        {{--<li><a href="#">2</a></li>--}}
+                        {{--<li><a href="#">3</a></li>--}}
+                        {{--<li><a href="#">4</a></li>--}}
+                        {{--<li><a href="#">»</a></li>--}}
+                    {{--</ul>	<!-- End of /.pagination -->--}}
+                {{--</div>--}}
+            </div>	<!-- End of /.col-md-9 -->
+            <div class="col-md-3">
+                <div class="blog-sidebar">
+                    <div class="block">
+                        <h4>Catagories</h4>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                Italian Foods
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                Traditional Food
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                Indian Food
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                Spanish Food
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa  fa-dot-circle-o"></i>
+                                Thai FoodN
+                            </a>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <img src="images/food-ad.png" alt="">
+                    </div>
+                    <div class="block">
+                        <h4>Latest Food Items</h4>
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="images/post-img.png" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <a href="" class="media-heading">Lamb leg roast
+                                        <p>Lorem ipsum dolor sit amet.</p></a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="images/post-img-2.png" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <a href="" class="media-heading"> Lamingtons
+                                        <p>Lorem ipsum dolor.</p></a>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="images/post-img-3.png" alt="...">
+                                </a>
+                                <div class="media-body">
+                                    <a href="" class="media-heading">
+                                        Anzac Salad
+                                        <p>Lorem ipsum dolor sit.</p>
+
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <h4>Food Tag</h4>
+                        <div class="tag-link">
+                            <a href="">BALLET</a>
+                            <a href="">CHRISTMAS</a>
+                            <a href="">ELEGANCE</a>
+                            <a href="">ELEGANT</a>
+                            <a href="">SHOPPING</a>
+                            <a href="">SHOP</a>
+                        </div>
+                    </div>
                 </div>	<!-- End of /.col-md-3 -->
-            @endforeach
 
-        </div>	<!-- End of /.row -->
-    </div>	<!-- End of /.container -->
+            </div>	<!-- End of /.row -->
+        </div>	<!-- End of /.container -->
+    </div>
 </section>	<!-- End of Section -->
-
-
-
 
 <!-- CALL TO ACTION Start
 ================================================== -->
@@ -401,7 +392,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="block clearfix">
-                    <a href="#">
+                    <a href="/">
                         <img src="https://i.imgur.com/y59pdrW.png" alt="">
                     </a>
                     <p>

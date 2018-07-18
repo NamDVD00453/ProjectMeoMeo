@@ -11,7 +11,7 @@ class AdminController extends Controller
     //
     public function index()
     {
-        return view('manager')->with([
+        return view('adminlayouts.dashboard')->with([
             "listProduct" => Product::all(),
             "listCategory" => Category::all()
         ]);

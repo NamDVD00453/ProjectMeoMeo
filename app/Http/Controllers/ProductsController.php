@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\View;
 
 class ProductsController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('home')->with([
+        return view('layouts.master')->with([
             "listProduct" => Product::all(),
             "listCategory" => Category::all()
             ]);
@@ -26,9 +28,64 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function create()
     {
         //
+        return view('adminlayouts.addnew')->with([
+            "listCategory" => Category::all()
+        ]);
+    }
+
+    public function insert()
+    {
+//        echo (Input::get('productName'));
+
+        $product = new Product();
+        if (Input::get('productName' == null))
+        {
+            return 'Products name cannot be empty';
+        } else
+        {
+            $product->productName = Input::get('productName');
+        };
+
+        if (Input::get('productDesc' == null))
+        {
+            return 'Products description cannot be empty';
+        } else
+        {
+            $product->productDesc = Input::get('productDesc');
+        };
+
+        if (Input::get('productPrice' == null))
+        {
+            return 'Products price cannot be empty';
+        } else
+        {
+            $product->productPrice = Input::get('productPrice');
+        };
+
+        if (Input::get('productImg' == null))
+        {
+            return 'Products Image cannot be empty';
+        } else
+        {
+            $product->img = Input::get('productImg');
+        };
+
+        if (Input::get('productCategory' == null))
+        {
+            return 'Products Image cannot be empty';
+        } else
+        {
+            $product->categoryId = Input::get('productCategory');
+        };
+
+        $product->save();
+        return redirect('/admin/addProduct')->with('status', 'Product saved!');
     }
 
     /**
@@ -37,6 +94,16 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function delete(Request $request, $productId)
+    {
+        $product = Product::where('productId', '=', $productId)->firstOrFail();
+        $name = $product->productName;
+        $product->delete();
+//        return 'Delete product <' + $product->productName + '> Complete!';
+        return 'Product deleted!';
+    }
+
     public function store(Request $request)
     {
         //

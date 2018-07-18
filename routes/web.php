@@ -21,3 +21,14 @@ Route::get('/', 'ProductsController@index');
 //    return view('manager');
 //});
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/addProduct', 'ProductsController@create');
+
+Route::post('product/insert','ProductsController@insert');
+Route::get('admin/product/delete/{productId}', 'ProductsController@delete');
+Route::get('/category/{categoryId}', 'CategoriesController@index');
+Route::get('/product/{productId}', 'ProductsController@index');
+
+
+Route::get('/test', function () {
+    return view('layouts.template');
+});
