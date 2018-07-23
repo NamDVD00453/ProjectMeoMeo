@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Order;
 use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Input;
 use function MongoDB\BSON\toJSON;
 
 class OrderController extends Controller
@@ -73,10 +75,17 @@ class OrderController extends Controller
         ]);
     }
 
+    public function addOrder(Request $request){
+        $order = new Order();
 
+        $order->shipName = Input::get('shipName');
+        $order->shipPhone = Input::get('shipPhone');
+        $order->shipAddress = Input::get('shipAddress');
+        $order->customerEmail = Input::get('customerEmail');
+        $order->orderDetail = $request->cookie('cart');
 
+        return $order;
 
-
-
+    }
 
 }

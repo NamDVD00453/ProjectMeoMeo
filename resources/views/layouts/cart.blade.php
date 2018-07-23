@@ -93,27 +93,29 @@
                             <h5>{{$total}} VND</h5>
 
                             <h2>Customer's Information</h2>
-                            <form action="">
+                            <form role="form" method="post" action="/cart">
+                                {{ csrf_field() }}
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label>Customer's Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter fullname" name="productName">
+                                        <input type="text" class="form-control" placeholder="Enter fullname" name="shipName">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Customer's Email</label>
+                                        <input type="text" class="form-control" placeholder="Enter email" name="customerEmail">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Customer's Phone</label>
-                                        <input type="text" class="form-control" placeholder="Enter phone number" name="productName">
+                                        <input type="text" class="form-control" placeholder="Enter phone number" name="shipPhone">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Customer's Address</label>
-                                        <textarea class="form-control" rows="3" name="productDesc" placeholder="Enter address"></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="Enter address" name="shipAddress" ></textarea>
                                     </div>
-
-
-
                                 </div>
-
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">Checkout</button>
                                 </div>

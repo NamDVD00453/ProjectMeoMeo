@@ -38,6 +38,8 @@ Route::get('admin/category/delete/{categoryId}', 'CategoriesController@delete');
 
 
 Route::get('/cart', 'OrderController@showCart');
+Route::post('/cart', 'OrderController@addOrder');
+
 
 
 Route::get('/test', function () {

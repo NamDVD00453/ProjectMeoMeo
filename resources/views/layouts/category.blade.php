@@ -202,7 +202,7 @@
                 cart[elm.id]++;
             }
             Cookies.set("cart", cart);
-            alert(getCookie("cart"));
+            alert('Item added to cart !')
         }
 </script>
 @stop
