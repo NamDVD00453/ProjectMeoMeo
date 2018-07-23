@@ -18,7 +18,7 @@ class ProductsController extends Controller
     public function index()
     {
         return view('layouts.master')->with([
-            "listProduct" => Product::all(),
+            "listProduct" => Product::all()->take(8),
             "listCategory" => Category::all()
             ]);
     }
@@ -28,6 +28,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function showAll()
+    {
+        return view('layouts.allproduct')->with([
+            "listProduct" => Product::paginate(12),
+            "listCategory" => Category::all()
+        ]);
+    }
     public function item(Request $request, $productId)
     {
 
@@ -97,13 +105,6 @@ class ProductsController extends Controller
             };
         };
 
-
-
-
-
-
-
-
 //        if ($c == 'T')
 //        {
 ////            $product->save();
@@ -125,7 +126,11 @@ class ProductsController extends Controller
         $name = $product->productName;
         $product->delete();
 //        return 'Delete product <' + $product->productName + '> Complete!';
-        return 'Product deleted!';
+//        return redirect('adminlayouts.allproduct')->with([
+//            "listProduct" => Product::all(),
+//            "listCategory" => Category::all()
+//        ]);
+        return 'DELETED';
     }
 
     public function store(Request $request)

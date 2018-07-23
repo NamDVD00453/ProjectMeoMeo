@@ -7,6 +7,7 @@ use App\Order;
 use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Input;
 use function MongoDB\BSON\toJSON;
@@ -78,13 +79,53 @@ class OrderController extends Controller
     public function addOrder(Request $request){
         $order = new Order();
 
+        $currentTime = Carbon::now()->addHours(7)->toDateString();
+        $millitime = round(microtime(true) * 1000);
+
+
+
+
+        $order->status = 0;
+        $order->orderId = $millitime;
+        $order->orderDate = $currentTime;
+
         $order->shipName = Input::get('shipName');
         $order->shipPhone = Input::get('shipPhone');
         $order->shipAddress = Input::get('shipAddress');
         $order->customerEmail = Input::get('customerEmail');
         $order->orderDetail = $request->cookie('cart');
 
-        return $order;
+//        return $order;
+
+        $listOrder = json_decode($order->orderDetail);
+
+        $totalPrice = 0;
+
+        foreach($listOrder as $key=>$value){
+
+            //key la id san pham
+            //value la so luong san pham
+            $product = Product::where('productId', '=', $key)->firstOrFail();
+            $price = (int)str_replace('.', '', $product->productPrice);
+            $totalPrice = $totalPrice + $value * $price;
+
+            $orderDetail = new OrderDetail();
+            $orderDetail->orderId = $millitime;
+            $orderDetail->productId = $key;
+            $orderDetail->quantity = $value;
+            $orderDetail->unitPrice = $price;
+
+            $orderDetail->save();
+
+
+        }
+
+        $order->totalPrice = $totalPrice;
+
+        $order->save();
+        return redirect('/')->withCookie(Cookie::forget('cart'));
+
+//        return  $currentTime;
 
     }
 

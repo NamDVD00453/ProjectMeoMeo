@@ -25,3 +25,4 @@
 <script src="{{asset('index/js/jquery.nicescroll.js')}}"></script>
 <script src="{{asset('index/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('index/js/main.js')}}" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

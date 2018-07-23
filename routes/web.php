@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('products.home');
 //});
 Route::get('/', 'ProductsController@index');
+Route::get('/all', 'ProductsController@showAll');
 //Route::get('/manager', 'ProductsController@index');
 //Route::get('/admin', function () {
 //    return view('manager');

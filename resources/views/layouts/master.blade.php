@@ -163,7 +163,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="products-heading">
-                    <h2>THỰC ĐƠN</h2>
+                    <h2>Món ăn  nổi bật</h2>
                 </div>
             </div>
         </div>

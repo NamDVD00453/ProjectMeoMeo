@@ -1,4 +1,4 @@
-<section id="top">
+<section id="top" class="nav-fix clearfix navbar-fixed-top">
     <div class="container">
         <div class="row">
             <div class="col-md-7">

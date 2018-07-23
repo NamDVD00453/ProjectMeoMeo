@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary">Checkout</button>
+                                    <button type="submit" onclick="submitTotal()" class="btn btn-primary">Checkout</button>
                                 </div>
                             </form>
                         </div>
@@ -129,7 +129,8 @@
     </section>	<!-- End of Section -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script>
-        function del(elm) {
+        function del(elm)
+        {
 
             var cart = JSON.parse(Cookies.get("cart"));
             var id = elm.id;
@@ -139,7 +140,18 @@
             $( "#" + rowId).remove();
             alert("Item Deleted!");
         }
+
+        function submitTotal()
+        {
+
+            Cookies.set("total", '{{$total}}');
+
+        }
+
+
     </script>
+
+
 
 
 @stop
